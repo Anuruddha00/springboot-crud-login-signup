@@ -27,20 +27,26 @@ public class UserController {
 	}
 	
 	
-	@PostMapping("/userLogin")	
-	public User loginUser(@RequestBody User user) throws Exception {
-		
-		String tempEmail = user.getEmail();
-		String tempPassword = user.getPassword();
-			User userobj = null;
-				if (tempEmail != null && tempPassword != null) {
-					userobj = service.checkuseremailnPassword(tempEmail, tempPassword);
-				}
-						if (userobj == null) {
-							throw new Exception (" Invalid User");
-						}
-						
-			return userobj;
-		}
+	@PostMapping("/userLogin")
+	public ResponseEP loginUser(@RequestBody User user) {
+		return service.successUser(user);
+	}
+	
+	
+//	@PostMapping("/userLogin")	
+//	public User loginUser(@RequestBody User user) throws Exception {
+//		
+//		String tempEmail = user.getEmail();
+//		String tempPassword = user.getPassword();
+//			User userobj = null;
+//				if (tempEmail != null && tempPassword != null) {
+//					userobj = service.checkuseremailnPassword(tempEmail, tempPassword);
+//				}
+//						if (userobj == null) {
+//							throw new Exception (" Invalid User");
+//						}
+//						
+//			return userobj;
+//		}
 	}
 

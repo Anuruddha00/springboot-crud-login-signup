@@ -45,6 +45,41 @@ public class RegService {
 		
 	}
 	
+	public ResponseEP successUser(User user) {
+		ResponseEP res = null;
+		
+		try {
+			//service + business logic
+			String checkEmail = user.getEmail();
+			String password = user.getPassword();
+			
+			User userObj = null;
+			if(checkEmail != null && password != null) {
+				userObj =checkuseremailnPassword(checkEmail ,password);
+				}
+			if(userObj == null) {
+				res = new ResponseEP();
+				res.setMessageString("Invalid User");
+				res.setStatusCode(406);
+				}
+			else{
+				res = new ResponseEP();
+				res.setMessageString("User Login Successfully");
+				res.setStatusCode(200);
+				res.setUserid(1);
+				}
+			}catch (Exception e) {
+				// what is your error response
+				res = new ResponseEP();
+				res.setMessageString("Error in login");
+				res.setStatusCode(405);
+				res.setUserid(0);
+			}
+		return res;
+	}
+	
+	
+	
 	public User checkuseremail(String email) {
 		return repo.findByEmail(email);
 	}
