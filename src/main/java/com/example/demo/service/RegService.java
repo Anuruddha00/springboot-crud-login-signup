@@ -60,7 +60,7 @@ public class RegService {
 			if(userObj == null) {
 				res = new ResponseEP();
 				res.setMessageString("Invalid User");
-				res.setStatusCode(406);
+				res.setStatusCode(401);
 				}
 			else{
 				res = new ResponseEP();
