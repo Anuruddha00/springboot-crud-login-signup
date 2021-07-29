@@ -23,7 +23,7 @@ public class RegService {
 				if(userObj !=null) {
 					res = new ResponseEP();
 					res.setMessageString("User already exist");
-					res.setStatusCode(500);
+					res.setStatusCode(409);
 					res.setUserid(userObj.getId());
 					}else {
 						repo.save(user);
